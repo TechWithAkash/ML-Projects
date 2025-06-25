@@ -1,139 +1,233 @@
+# 🚀 ML Project - Modular Coding
 
-# End-to-End Machine Learning Project 🧠
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![MLOps](https://img.shields.io/badge/MLOps-Ready-orange.svg)](https://mlops.org/)
 
-A modular and production-ready implementation of a complete machine learning pipeline, built for scalability, maintainability, and real-world deployment.
+> An end-to-end machine learning project built with modular architecture and industry best practices for scalable, maintainable, and production-ready ML solutions.
 
----
+## 🎯 Project Overview
 
-## 🚀 Project Overview
+This project demonstrates a complete machine learning pipeline using modular coding principles. It's designed to be:
+- **Scalable**: Easy to extend with new features and models
+- **Maintainable**: Clean, well-documented code structure
+- **Production-Ready**: Follows MLOps best practices
+- **Reusable**: Components can be reused across different projects
 
-This project demonstrates the full lifecycle of a machine learning application — from data ingestion and preprocessing to model training, evaluation, and deployment — using a modular and reusable codebase.
-
-It is designed for educational purposes, portfolio building, and can serve as a template for real-world ML workflows.
-
----
-
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 ```
-
-ml\_project/
-│
-├── data/                  # Raw and processed data
-│   ├── raw/
-│   └── processed/
-│
-├── notebooks/             # EDA and experimentation
-│
-├── src/                   # Source code for modules
-│   ├── data\_ingestion/
-│   ├── data\_preprocessing/
-│   ├── feature\_engineering/
-│   ├── model\_training/
-│   ├── model\_evaluation/
-│   └── model\_deployment/
-│
-├── config/                # YAML or JSON configuration files
-│
-├── artifacts/             # Generated artifacts (models, metrics, etc.)
-│
-├── logs/                  # Logs for the pipeline
-│
-├── tests/                 # Unit tests for each module
-│
-├── main.py                # Pipeline execution entrypoint
-├── requirements.txt       # Project dependencies
-└── README.md              # Project documentation
-
-````
-
----
-
-## ⚙️ Features
-
-- Modular codebase following clean architecture
-- End-to-end ML pipeline automation
-- YAML-based configuration management
-- Logging and error handling
-- Experiment tracking (optional: MLflow, Weights & Biases)
-- Easily extensible for new datasets/models
-
----
+ML-Project-Modular-Coding/
+├── 📂 src/                          # Source code
+│   ├── 📂 components/               # Core ML components
+│   │   ├── data_ingestion.py        # Data loading and ingestion
+│   │   ├── data_transformation.py   # Feature engineering & preprocessing
+│   │   └── model_trainer.py         # Model training logic
+│   ├── 📂 pipeline/                 # Pipeline orchestration
+│   │   ├── train_pipeline.py        # Training pipeline
+│   │   └── predict_pipeline.py      # Prediction pipeline
+│   ├── exception.py                 # Custom exception handling
+│   ├── logger.py                    # Centralized logging
+│   └── utils.py                     # Common utility functions
+├── 📂 logs/                         # Application logs
+├── 📂 venv/                         # Virtual environment
+├── requirements.txt                 # Project dependencies
+├── setup.py                         # Package setup configuration
+├── .gitignore                       # Git ignore rules
+└── README.md                        # Project documentation
+```
 
 ## 🛠️ Tech Stack
 
-- Python 3.10+
-- Pandas, NumPy, Scikit-learn
-- Matplotlib, Seaborn
-- PyYAML, Logging
-- Jupyter Notebooks
-- Optional: MLflow, Docker, FastAPI (for deployment)
+- **Language**: Python 3.8+
+- **ML Libraries**: scikit-learn, pandas, numpy
+- **Logging**: Python logging module
+- **Package Management**: pip, setuptools
+- **Version Control**: Git
 
----
+## 🚀 Quick Start
 
-## 🧪 Setup & Installation
+### Prerequisites
 
-1. **Clone the Repository**
+- Python 3.8 or higher
+- pip package manager
+- Git
+
+### Installation
+
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/ml-project.git
-   cd ml-project
-````
-
-2. **Create a Virtual Environment**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   git clone https://github.com/yourusername/ML-Project-Modular-Coding.git
+   cd ML-Project-Modular-Coding
    ```
 
-3. **Install Dependencies**
+2. **Create and activate virtual environment**
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
 
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Set Configuration**
+4. **Install the package in development mode**
+   ```bash
+   pip install -e .
+   ```
 
-   * Modify the YAML files in the `config/` directory as needed.
+## 📊 Usage
 
----
+### Training Pipeline
 
-## ▶️ How to Run the Project
+```python
+from src.pipeline.train_pipeline import TrainPipeline
 
-You can run the full pipeline using the main script:
-
-```bash
-python main.py
+# Initialize and run training pipeline
+pipeline = TrainPipeline()
+pipeline.run()
 ```
 
-Or run individual modules like:
+### Prediction Pipeline
 
-```bash
-python src/data_ingestion/data_ingestion.py
+```python
+from src.pipeline.predict_pipeline import PredictPipeline
+
+# Initialize prediction pipeline
+predictor = PredictPipeline()
+
+# Make predictions
+predictions = predictor.predict(input_data)
 ```
 
----
+### Individual Components
+
+```python
+# Data Ingestion
+from src.components.data_ingestion import DataIngestion
+data_ingestion = DataIngestion()
+data_ingestion.initiate_data_ingestion()
+
+# Data Transformation
+from src.components.data_transformation import DataTransformation
+data_transformation = DataTransformation()
+data_transformation.initiate_data_transformation()
+
+# Model Training
+from src.components.model_trainer import ModelTrainer
+model_trainer = ModelTrainer()
+model_trainer.initiate_model_trainer()
+```
+
+## 🏗️ Architecture
+
+### Modular Design Principles
+
+1. **Separation of Concerns**: Each component has a single responsibility
+2. **Loose Coupling**: Components are independent and interchangeable
+3. **High Cohesion**: Related functionality is grouped together
+4. **Reusability**: Components can be reused across different projects
+
+### Pipeline Flow
+
+```
+Data Ingestion → Data Transformation → Model Training → Model Evaluation → Deployment
+```
+
+### Error Handling & Logging
+
+- **Custom Exception Handling**: Consistent error management across all components
+- **Centralized Logging**: All activities are logged with timestamps and details
+- **Error Tracking**: Detailed error messages with file names and line numbers
+
+## 📈 Features
+
+- ✅ **Modular Architecture**: Easy to extend and maintain
+- ✅ **Comprehensive Logging**: Track all operations and errors
+- ✅ **Error Handling**: Robust exception management
+- ✅ **Pipeline Orchestration**: Automated training and prediction workflows
+- ✅ **Data Validation**: Ensure data quality and consistency
+- ✅ **Model Versioning**: Track different model versions
+- ✅ **Configuration Management**: Centralized configuration handling
 
 ## 🧪 Testing
 
-Run unit tests using:
-
 ```bash
-pytest tests/
+# Run all tests
+python -m pytest tests/
+
+# Run specific test file
+python -m pytest tests/test_data_ingestion.py
+
+# Run with coverage
+python -m pytest --cov=src tests/
 ```
 
----
+## 📝 Logging
+
+All operations are logged with different levels:
+- **INFO**: General information about the process
+- **DEBUG**: Detailed information for debugging
+- **WARNING**: Warning messages
+- **ERROR**: Error messages with full traceback
+
+Logs are stored in the `logs/` directory with timestamps.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow best practices and ensure all code is modular and tested.
-Feel free to fork the repository and submit a pull request.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
----
+## 📋 Development Guidelines
+
+- Follow PEP 8 style guidelines
+- Write comprehensive docstrings
+- Add unit tests for new features
+- Update documentation for any changes
+- Use meaningful commit messages
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Import Errors**: Make sure you've installed the package with `pip install -e .`
+2. **Path Issues**: Ensure you're running commands from the project root directory
+3. **Virtual Environment**: Always activate your virtual environment before running the code
+
+### Getting Help
+
+- Check the logs in the `logs/` directory for detailed error information
+- Ensure all dependencies are installed correctly
+- Verify Python version compatibility (3.8+)
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 👨‍💻 Author
 
+**Akash Vishwakarma**
+- Email: vishwakarmaakashav17@gmail.com
+- GitHub: [@yourusername](https://github.com/yourusername)
+
+## 🙏 Acknowledgments
+
+- Thanks to the open-source community for the amazing tools and libraries
+- Inspired by MLOps best practices and industry standards
+- Built with ❤️ for the machine learning community
+
+---
+
+⭐ **Star this repository if you find it helpful!** ⭐
+
+For more information, feel free to reach out or open an issue.
