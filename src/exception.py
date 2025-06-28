@@ -1,6 +1,6 @@
 # src/exception.py
 import sys
-from logger import logging
+from src.logger import logging
 def error_message_detail(error,error_detail:sys):
     """
     Constructs a detailed error message with file name, line number,
