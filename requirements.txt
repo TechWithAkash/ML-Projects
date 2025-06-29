@@ -3,4 +3,6 @@ numpy
 seaborn
 scikit-learn
 dill
+xgboost
+catboost
 # -e . # Uncomment the line below to install the package in editable mode

@@ -9,7 +9,8 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
 @dataclass
 class DataIngestionConfig:
     train_data_path: str = os.path.join('artifacts', 'train.csv')
@@ -56,10 +57,15 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_path=train_data, test_path=test_data)
+    train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_path=train_data, test_path=test_data)
+
+    model_trainer = ModelTrainer()
+    # print(model_trainer.initiate_model_trainer(train_arr,test_arr))
+    print("Best accuracy of the model is : ",model_trainer.initiate_model_trainer(train_array=train_arr, test_array=test_arr, preprocessor_path=data_transformation.data_transformation_config.preprocessor_obj_file_path))
+
+
 
     print(f"Train Data Path: {train_data}")
     print(f"Test Data Path: {test_data}")
-# This code is for data ingestion in a machine learning project.
-# It reads a dataset from a CSV file, splits it into training and testing sets, and 
+
 
