@@ -2,5 +2,5 @@ pandas
 numpy
 seaborn
 scikit-learn
+dill
 # -e . # Uncomment the line below to install the package in editable mode
--e .
