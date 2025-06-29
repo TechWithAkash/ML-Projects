@@ -64,7 +64,6 @@ def evaluate_models(X_train,y_train,X_test,y_test,models,params):
 
             logging.info(f"Fitting model with GridSearchCV: {list(models.keys())[i]}")
             # Fitting the model with GridSearchCV
-            # model.set_params(**gs.best_params_)
             model = gs.fit(X_train,y_train)
 
 
@@ -102,15 +101,34 @@ def evaluate_models(X_train,y_train,X_test,y_test,models,params):
     
 
 
+
     except Exception as e:
         raise CustomException(e,sys)
     
 
+def load_object(file_path):
 
-
+    try:
+        """
+        Loads an object from a file using dill.
+        Parameters:
+        - file_path (str): The path from which the object will be loaded.
+        Returns:
+        - obj: The loaded object.
+        """
+        logging.info(f"Loading object from {file_path}")
+        with open(file_path, 'rb') as file_obj:
+            obj = dill.load(file_obj)
+        logging.info(f"Object loaded successfully from {file_path}")
+        return obj
+    except Exception as e:
+        logging.error(f"Error loading object from {file_path}: {e}")
+        raise CustomException(e, sys)
     
 
-# def evaluate_models(X_train, y_train, X_test, y_test, models):
+
+
+   
     """
     Evaluates multiple regression models and returns their performance metrics.
     

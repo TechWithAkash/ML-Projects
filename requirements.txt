@@ -5,4 +5,6 @@ scikit-learn
 dill
 xgboost
 catboost
+Flask
+gunicorn
 # -e . # Uncomment the line below to install the package in editable mode
